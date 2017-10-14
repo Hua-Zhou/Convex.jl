@@ -61,9 +61,9 @@ function conic_form!(x::SumLargestEigs, unique_conic_forms)
     m, n = size(A)
     Z = Variable(n, n)
     s = Variable()
-    p = minimize(s*k + trace(Z), 
-                 Z + s*eye(n) - A ⪰ 0, 
-                 A ⪰ 0, Z ⪰ 0)
+    p = minimize(s*k + trace(Z),
+                 Z + s*eye(n) - A ⪰ 0,
+                 Z ⪰ 0)
     cache_conic_form!(unique_conic_forms, x, p)
   end
   return get_conic_form(unique_conic_forms, x)
